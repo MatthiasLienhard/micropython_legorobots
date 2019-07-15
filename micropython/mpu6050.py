@@ -1,18 +1,14 @@
 import machine
 #adapted from https://github.com/adamjezek98/MPU6050-ESP8266-MicroPython
 
-class accel():
+class MPU6050():
     def __init__(self, i2c, addr=0x68):
         self.iic = i2c
         self.addr = addr
-        #self.iic.start()
         self.iic.writeto(self.addr, bytearray([107, 0]))
-        #self.iic.stop()
 
     def get_raw_values(self):
-        #self.iic.start()
         a = self.iic.readfrom_mem(self.addr, 0x3B, 14)
-        #self.iic.stop()
         return a
 
     def get_ints(self):
@@ -40,8 +36,8 @@ class accel():
         return vals  # returned in range of Int16
         # -32768 to 32767
 
-    def val_test(self):  # ONLY FOR TESTING! Also, fast reading sometimes crashes IIC
+    def val_test(self, iter=100, freq=250):  # ONLY FOR TESTING! Also, fast reading sometimes crashes IIC
         from time import sleep
-        while 1:
+        for _ in range(iter):
             print(self.get_values())
-            sleep(0.05)
+            sleep(1/freq)
