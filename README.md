@@ -32,6 +32,14 @@ on the esp32 and a 3D printed housing.
     * laser time of flight
     * i2c
     * maximum distance: 1300 mm
+* neopixel
+    * either one led directly on the box or 4 leds in a legobar
+
+### Planed components:
+* Camera module based on AI thinker esp32 cam (running its own firmware)
+* ir module?
+* ultrasonic sensor module (mainly as they look so nice like eyes) and have slightly larger range.
+
 
 
 ## micropython
@@ -41,3 +49,16 @@ There is a good documentation in the wiki of the github page:
 
 ## 3D printing:
 .stl and freecad files are available on Thingiverse: https://www.thingiverse.com/thing:3710047
+
+## robots:
+The robots subfolder contains micropython code for different models
+
+### function_test:
+Tests and example code for the different sensors, servos, and motors. 
+
+### autonomous_car:
+simple obstical avoidance
+* uses one motor, servo for steering, vl53l0x range finder, neopixel bar (optionally)
+
+### self_balancing_robot:
+* tbd

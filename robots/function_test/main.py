@@ -2,11 +2,11 @@ from machine import I2C, Pin, Neopixel
 import robot
 
 time.sleep_ms(500)
-np = Neopixel(Pin(27), 1) 
+#np = Neopixel(Pin(5), 4) 
 np.set(0,0x001000)  #green
-np.show()  
 
-neopixel_pin=27
+
+neopixel_pin=5
 pinsVbatt=[26,33,14,5,13]
 pins3v=[4,12,2,15,0]
 neopixel_pin=27
@@ -26,22 +26,36 @@ from machine import PWM
 servo = PWM(Pin(26),freq=50)
 servo.duty(8)
 time.sleep(1)
+
 for i in range(5):
-    np.set(0,0xFF0000)  #red
-    np.show() 
-    servo.duty(13)
-    time.sleep(1)
-    np.set(0,0x0000FF)  #blue
-    np.show()  
-    servo.duty(3)
-    time.sleep(1)
+    for pos in list(range(101))+(list(range(99,0,-1))):
+        #set neopixel
+        for i in range(1,5):
+            c=int(max(0,255-10*abs(i*20-pos))* 0x0010000)
+            np.set(i,c, update=False)
+        np.show()         
+        #set servo
+        servo.duty(pos/25+5)
+        time.sleep_ms(10)
 
-
+servo.duty(7)
 #import robot
 #auto=robot.autonomous_car(i2c, servo_pin=26)
 #time.sleep_ms(500)
 #auto.drive_autonomous()
 
 
-np.set(0,0x010101)  #white
-np.show()  
+np.set(1,0x010101, num=4 )  #white
+from d1motor import Motor
+m0=Motor(0, i2c)
+m1=Motor(1, i2c)
+
+#maximum is about 800 ? todo:confirm
+m1.speed(50)
+m0.speed(50)
+time.sleep(.5)
+m1.speed(-50)
+m0.speed(-50)
+time.sleep(.5)
+m1.brake()
+m0.brake()

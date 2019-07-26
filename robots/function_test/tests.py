@@ -21,12 +21,25 @@ colors={'white':0xFFFFF,
 	'fuchsia':0xFF00FF,
 	'purple':0x800080} #html colors
 
-np = Neopixel(Pin(27), 1) #one neopixel at pin 27
-for c in colors:
-    print('set neopixel 0 to {}'.format(c))
-    np.set(0,colors[c])
+#np = Neopixel(Pin(5), 4) #four neopixel at pin 5
+colnames=list(colors)
+for i in range(len(colors)-4):
+    for j in range(4):
+        c=colnames[i+j]
+        print('set neopixel {} to {}'.format(j,c))
+        np.set(j+1,colors[c])
+        time.sleep_ms(1)
     np.show()  
-    time.sleep(.5)
+    time.sleep(2)
+
+for i in range(10):
+    for pos in list(range(-4,55))+(list(range(53,-4,-1))):
+        for i in range(1,5):
+            c=max(0,255-abs(i*10-pos)*10)* 0x0010000
+            np.set(i,c)
+            time.sleep_ms(1)
+        #np.show()
+        time.sleep_ms(10)
 
 #sensors
 #init i2c bus
@@ -85,6 +98,7 @@ m1.brake()
 
 for i in range(10):
     m0.speed(i*80)
+    m1.speed(i*80)
     time.sleep(.5)
 
 for i in range(10):

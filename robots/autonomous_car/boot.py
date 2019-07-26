@@ -1,6 +1,6 @@
 import uos, machine, time
 
-np = machine.Neopixel(machine.Pin(27), 1) 
+np = machine.Neopixel(machine.Pin(5), 4) 
 np.set(0, 0xFF0000)
 np.show()
 import network
