@@ -19,8 +19,8 @@ class Servo:
     def offset(self, position=None, degrees=None):
         if position is None:
             position=(degrees / self.range_degrees) * 2
-        self.set(self.position+position)
         self.center+=self.dev*position
+        self.set(self.position)
 
     
     @property
