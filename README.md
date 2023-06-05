@@ -1,7 +1,10 @@
+[![Licence: MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/MatthiasLienhard/micropython_legobot/blob/master/LICENSE.txt)
+<img align="right" src="brick-bot.jpg" width="300"  />
+
 # micropython_legorobots
 
 This repository is for the documentation of my LEGO compatible robot platform based 
-on the esp32 and a 3D printed housing. 
+on the esp32 and a 3D printed housing. Find more information here: https://makeprojects.com/project/brick-bots
 
 ## hardware
 ### pinout
@@ -21,8 +24,9 @@ on the esp32 and a 3D printed housing.
         * speed free/ load: 7700/6500 U/min
         * nominal/max torque: 1,56/10,0 mNm
     * driven from the battery (at max 4.2 V)
+* motors: Noname geared hall effect encoder motors, advertised as 5V (but I have doubts)
 * servo: mg90 metal gear
-    * hobby servo pwm control at 50Hz
+    * hobby servo pwm control at 50Hz (also works with other frequency)
     * torque: 2.5kgcm (~250mNm)
     * drops out if battery voltage gets lower (3.XV?)
 * mpu 6050 Six-Axis (Gyro + Accelerometer)
