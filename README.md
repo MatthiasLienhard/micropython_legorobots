@@ -4,7 +4,8 @@
 # micropython_legorobots
 
 This repository is for the documentation of my LEGO compatible robot platform based 
-on the esp32 and a 3D printed housing. Find more information here: https://makeprojects.com/project/brick-bots
+on the esp32 and a 3D printed housing. Here are some videos of robots in action: https://www.youtube.com/playlist?list=PL1qkIXs3HI0etdAwmriiLkkrndSfr02LH
+Find more information here: https://makeprojects.com/project/brick-bots
 
 ## hardware
 ### pinout
@@ -65,4 +66,4 @@ simple obstical avoidance
 * uses one motor, servo for steering, vl53l0x range finder, neopixel bar (optionally)
 
 ### self_balancing_robot:
-* tbd
+* uses geared encoder motors, a IMU sensor, and PID algorithm to balance. At least in theory, its not working so far. 
